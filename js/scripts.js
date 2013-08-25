@@ -1,31 +1,26 @@
-/* if ("ontouchstart" in window) {
-	alert('This is a touch device');
-} else {
-	alert('Your using a standard computer...');
-} */
-
 $(document).ready(function(){
 	$('.button').click(function(){
-	    var nameValue = [];
-		/*for (var i = 0; i <= 3; i += 1) {
-			nameValue[i] = $('.input').val();
-		}*/
-		/*for (var i = 0; i <= 3; i += 1) {
-			$('.preview').text(nameValue);
-		}*/
-		if ($('.input-0').val() === String()) {
+	    var nameValue = []; 
+		if ($('.input-0').val() !== '') {
 			nameValue[0] = $('.input-0').val();
 		} else {
-			alert('You suck! Enter text only!');
+			alert('Your name must be text.');
 		}
-		if ($('.input-1').val() === Number()) {
+		if ($('.input-1').val() !== '') {
 			nameValue[1] = $('.input-1').val();
 		} else {
-			alert('You Suck! Enter numbers only!');
+			alert('Your phone number must be numbers.');
 		}
-		// Etc...
-		nameValue[2] = $('.input-2').val();
-		nameValue[3] = $('.input-3').val();
+		if ($('.input-2').val() !== '') {
+			nameValue[2] = $('.input-2').val();
+		} else {
+			alert('Your email address can be text and numbers.');
+		}
+		if ($('.input-3').val() !== '') {
+			nameValue[3] = $('.input-3').val();
+		} else {
+			alert('Your occupation must be text.');
+		}
 		$('.preview-0').text(nameValue[0]);
 		$('.preview-1').text(nameValue[1]);
 		$('.preview-2').text(nameValue[2]);
@@ -33,4 +28,5 @@ $(document).ready(function(){
 	});
 });
 
+	
 	
