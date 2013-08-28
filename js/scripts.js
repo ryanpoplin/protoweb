@@ -1,32 +1,41 @@
-$(document).ready(function(){
-	$('.button').click(function(){
-	    var nameValue = []; 
-		if ($('.input-0').val() !== '') {
-			nameValue[0] = $('.input-0').val();
-		} else {
-			alert('Your name must be text.');
-		}
-		if ($('.input-1').val() !== '') {
-			nameValue[1] = $('.input-1').val();
-		} else {
-			alert('Your phone number must be numbers.');
-		}
-		if ($('.input-2').val() !== '') {
-			nameValue[2] = $('.input-2').val();
-		} else {
-			alert('Your email address can be text and numbers.');
-		}
-		if ($('.input-3').val() !== '') {
-			nameValue[3] = $('.input-3').val();
-		} else {
-			alert('Your occupation must be text.');
-		}
-		$('.preview-0').text(nameValue[0]);
-		$('.preview-1').text(nameValue[1]);
-		$('.preview-2').text(nameValue[2]);
-		$('.preview-3').text(nameValue[3]);
+(function(){
+	
+	var	usersForm = []; 
+	
+	$(function(){
+		// need regexp validation!
+		$('#submit').click(function(){
+			var input = $('#name-input').val();
+			$('#span-name').text(input);
+			var input = $('#phone-input').val();
+			$('#span-phone').text(input);
+			var input = $('#email-input').val();
+			$('#span-email').text(input);
+			var input = $('#job-input').val();
+			$('#span-job').text(input);
+			usersForm.push(getFormValues());
+			updateUserList(usersForm);
+			$('.input').val('');
+		});
 	});
-});
 
-	
-	
+	function getFormValues ( ) {
+		var nameVal	= $('#name-input').val();
+		var jobVal = $('#job-input').val();
+		var formData = {
+			name: nameVal,
+			job: jobVal
+		};
+		return formData;
+	}
+
+	function updateUserList (list) {
+		var ul = $('.users-list ul');
+		ul.html('');
+		list.forEach(function(user){
+			var text = "<li>" + user.name + " works at " +  user.job + "</li>";
+			ul.append(text);
+		});
+	}
+
+})();
